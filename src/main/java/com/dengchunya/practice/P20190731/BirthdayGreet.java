@@ -28,12 +28,12 @@ public class BirthdayGreet {
 
     private User buildUser(String record) {
         String[] userInfo = record.split(",");
-        User user = new User();
-        user.setLastName(userInfo[0]);
-        user.setFirstName(userInfo[1]);
-        user.setBirthday(userInfo[2]);
-        user.setEmail(userInfo[3]);
-        return user;
+        return User.builder()
+                .lastName(userInfo[0])
+                .firstName(userInfo[1])
+                .birthday(userInfo[2])
+                .email(userInfo[3])
+                .build();
     }
 
     private void sendBirthdayEmail(User user) {
