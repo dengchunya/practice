@@ -18,19 +18,26 @@ public class BirthdayGreet {
             String record;
             bufferedReader.readLine();
             while ((record = bufferedReader.readLine()) != null) {
-                String[] userInfo = record.split(",");
-                String birthdayStr = userInfo[2];
-                if (todayIsBirthday(birthdayStr)) {
-                    String firstName = userInfo[1];
-                    String emailAddress = userInfo[3];
-                    sendBirthdayEmail(emailAddress, firstName);
+                User user = buildUser(record);
+                if (todayIsBirthday(user.getBirthday())) {
+                    sendBirthdayEmail(user);
                 }
             }
         }
     }
 
-    private void sendBirthdayEmail(String emailAdress,String firstName) {
-        System.out.println("Happy birthday, dear " + firstName);
+    private User buildUser(String record) {
+        String[] userInfo = record.split(",");
+        User user = new User();
+        user.setLastName(userInfo[0]);
+        user.setFirstName(userInfo[1]);
+        user.setBirthday(userInfo[2]);
+        user.setEmail(userInfo[3]);
+        return user;
+    }
+
+    private void sendBirthdayEmail(User user) {
+        System.out.println("Happy birthday, dear " + user.getFirstName());
     }
 
     private boolean todayIsBirthday(String birthdayStr) {
@@ -39,6 +46,8 @@ public class BirthdayGreet {
     }
 
     private boolean todayIsBirthday(LocalDate birthday) {
-        return LocalDate.now().isEqual(birthday);
+        LocalDate today = LocalDate.now();
+        return today.getDayOfMonth() == birthday.getDayOfMonth()
+                && today.getMonth() == birthday.getMonth();
     }
 }
