@@ -1,4 +1,4 @@
-package com.dengchunya.practice.P20190731;
+package com.dengchunya.practice.p20190731;
 
 
 import lombok.AllArgsConstructor;
@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author dengchunya
+ */
 @Data
 @Builder
 @AllArgsConstructor

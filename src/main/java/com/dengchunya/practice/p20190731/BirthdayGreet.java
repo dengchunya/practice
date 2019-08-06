@@ -1,4 +1,4 @@
-package com.dengchunya.practice.P20190731;
+package com.dengchunya.practice.p20190731;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
